@@ -11,6 +11,6 @@ using namespace std;
 
 
 int main() {
-	//testAllExtins();
+	testAllExtins();
 	testAll();
 }
