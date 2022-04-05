@@ -8,4 +8,8 @@ add_executable(SDA_lab_4
         Colectie.cpp
         Colectie.h
         IteratorColectie.cpp
-        IteratorColectie.h)
+        IteratorColectie.h
+        TestScurt.cpp
+        TestScurt.h
+        TestExtins.cpp
+        TestExtins.h)

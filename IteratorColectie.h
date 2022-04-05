@@ -16,6 +16,7 @@ private:
     //contine o referinta catre containerul pe care il itereaza
 	const Colectie& col;
 	/* aici e reprezentarea  spcifica a iteratorului*/
+    PNod curent;
 
 public:
 
@@ -25,6 +26,11 @@ public:
 		//muta iteratorul in container
 		// arunca exceptie daca iteratorul nu e valid
 		void urmator();
+
+        //muta iteratorul in container
+        // arunca exceptie daca iteratorul nu e valid
+        void precedent();
+
 
 		//verifica daca iteratorul e valid (indica un element al containerului)
 		bool valid() const;

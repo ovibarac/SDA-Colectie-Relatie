@@ -1,4 +1,4 @@
-#pragma once;
+#pragma once
 
 typedef int TElem;
 
@@ -25,7 +25,7 @@ private:
     PNod prec;
 
 public:
-    friend class Lista;
+    friend class Colectie;
     //constructor
     //Θ(1)
     Node(TElem val, PNod precendent,PNod urmator);
@@ -37,6 +37,10 @@ public:
     //pointer la urmatorul nod
     //Θ(1)
     PNod urmator();
+
+    //pointer nodul precedent
+    //Θ(1)
+    PNod precedent();
 };
 
 class Colectie {
@@ -45,6 +49,9 @@ class Colectie {
 
 private:
 	/* aici e reprezentarea */
+
+    //primul nod
+    PNod prim;
 public:
 		//constructorul implicit
 		Colectie();
