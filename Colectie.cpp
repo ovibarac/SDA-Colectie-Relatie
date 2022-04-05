@@ -4,6 +4,24 @@
 
 using namespace std;
 
+TElem Node::elem() {
+    //Θ(1)
+    return this->val;
+}
+
+PNod Node::urmator() {
+    //Θ(1)
+    return this->urm;
+}
+
+Node::Node(TElem val, PNod precedent,PNod urmator) {
+    //Θ(1)
+    this->val = val;
+    this->urm = urmator;
+    this->prec = precedent;
+}
+
+
 bool rel(TElem e1, TElem e2) {
 	/* de adaugat */
 	return false;

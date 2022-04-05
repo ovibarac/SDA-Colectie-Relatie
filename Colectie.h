@@ -9,6 +9,35 @@ typedef bool(*Relatie)(TElem, TElem);
 bool rel(TElem, TElem);
 
 class IteratorColectie;
+class Node;
+
+typedef Node *PNod;
+
+class Node{
+private:
+    //valoarea nodului
+    TElem val;
+
+    //adresa nodului urmator
+    PNod urm;
+
+    //adresa nodului precedent
+    PNod prec;
+
+public:
+    friend class Lista;
+    //constructor
+    //Θ(1)
+    Node(TElem val, PNod precendent,PNod urmator);
+
+    //valoarea
+    //Θ(1)
+    TElem elem();
+
+    //pointer la urmatorul nod
+    //Θ(1)
+    PNod urmator();
+};
 
 class Colectie {
 
