@@ -114,61 +114,61 @@ void testSterge() {
 	for (int i = -100; i < 100; i=i+2) {
 		assert(c.sterge(i) == true);
 	}
-//	assert(c.dim() == 100);
-//	for (int i = -100; i < 100; i++) {
-//		if (i % 2 == 0) {
-//			assert(c.nrAparitii(i) == 0);
-//			assert(c.cauta(i) == false);
-//			assert(c.sterge(i) == false);
-//		}
-//		else {
-//			assert(c.nrAparitii(i) == 1);
-//			assert(c.cauta(i) == true);
-//		}
-//		c.adauga(i);
-//		c.adauga(i);
-//		c.adauga(i);
-//	}
-//	assert(c.dim() == 700);
-//	for (int i = -200; i < 200; i++) {
-//		if (i < -100 || i >= 100) {
-//			assert(c.cauta(i) == false);
-//			assert(c.nrAparitii(i) == 0);
-//			assert(c.sterge(i) == false);
-//		}
-//		else if (i % 2 == 0) {
-//			assert(c.cauta(i) == true);
-//			assert(c.nrAparitii(i) == 3);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == false);
-//		}
-//		else {
-//			assert(c.cauta(i) == true);
-//			assert(c.nrAparitii(i) == 4);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == true);
-//			assert(c.sterge(i) == false);
-//		}
-//	}
-//	Colectie c2;
-//	for (int i = 300; i >= -500; i--) {
-//		c2.adauga(i);
-//		c2.adauga(i * 2);
-//		c2.adauga(-2 * i);
-//	}
-//	for (int i = -100; i < 100; i++) {
-//		for (int j = 0; j < 100; j++) {
-//			c2.sterge(i);
-//		}
-//	}
-//	for (int i = -100; i < 100; i++) {
-//		assert(c2.nrAparitii(i) == 0);
-//		assert(c2.cauta(i) == false);
-//	}
+	assert(c.dim() == 100);
+	for (int i = -100; i < 100; i++) {
+		if (i % 2 == 0) {
+			assert(c.nrAparitii(i) == 0);
+			assert(c.cauta(i) == false);
+			assert(c.sterge(i) == false);
+		}
+		else {
+			assert(c.nrAparitii(i) == 1);
+			assert(c.cauta(i) == true);
+		}
+		c.adauga(i);
+		c.adauga(i);
+		c.adauga(i);
+	}
+	assert(c.dim() == 700);
+	for (int i = -200; i < 200; i++) {
+		if (i < -100 || i >= 100) {
+			assert(c.cauta(i) == false);
+			assert(c.nrAparitii(i) == 0);
+			assert(c.sterge(i) == false);
+		}
+		else if (i % 2 == 0) {
+			assert(c.cauta(i) == true);
+			assert(c.nrAparitii(i) == 3);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == false);
+		}
+		else {
+			assert(c.cauta(i) == true);
+			assert(c.nrAparitii(i) == 4);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == true);
+			assert(c.sterge(i) == false);
+		}
+	}
+	Colectie c2;
+	for (int i = 300; i >= -500; i--) {
+		c2.adauga(i);
+		c2.adauga(i * 2);
+		c2.adauga(-2 * i);
+	}
+	for (int i = -100; i < 100; i++) {
+		for (int j = 0; j < 100; j++) {
+			c2.sterge(i);
+		}
+	}
+	for (int i = -100; i < 100; i++) {
+		assert(c2.nrAparitii(i) == 0);
+		assert(c2.cauta(i) == false);
+	}
 }
 
 void testQuantity() {
@@ -199,5 +199,5 @@ void testAllExtins() {
 	testCreeaza();
 	testAdauga();
 	testSterge();
-//	testQuantity();
+	testQuantity();
 }

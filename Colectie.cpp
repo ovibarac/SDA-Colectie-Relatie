@@ -69,11 +69,41 @@ void Colectie::adauga(TElem e) {
 bool Colectie::sterge(TElem e) {
     //O(n)
     PNod crt = prim;
+
+    //daca colectia e vida
+    if(prim == nullptr)
+        return false;
+
+    //daca e primul si singurul element
+    if(prim->urm == nullptr && prim->elem() == e){
+        prim = nullptr;
+        return true;
+    }
+
+    //daca e primul element
+    if(prim->elem() == e){
+        prim = prim->urm;
+        prim->prec = nullptr;
+        delete crt;
+        return true;
+    }
+
+
     while (crt != nullptr) {
         if (crt->elem() == e) {
-            crt->prec->urm = crt->urmator();
-            crt->urm->prec = crt->precedent();
-            return true;
+            //daca e ultimul
+            if(crt->urmator() == nullptr){
+                crt->prec->urm = nullptr;
+                delete crt;
+                return true;
+            }else{
+                //daca e intermediar
+                crt->prec->urm = crt->urmator();
+                crt->urm->prec = crt->precedent();
+                delete crt;
+                return true;
+            }
+
         }
         crt = crt->urmator();
     }
