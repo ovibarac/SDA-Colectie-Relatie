@@ -40,5 +40,5 @@ void testEliminaAparitii(){
 int main() {
 	testAllExtins();
 	testAll();
-//    testEliminaAparitii();
+    testEliminaAparitii();
 }

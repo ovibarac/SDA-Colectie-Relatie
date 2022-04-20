@@ -136,10 +136,43 @@ int Colectie::eliminaAparitii(int nr, TElem elem){
 void Colectie::adauga(TElem elem) {
     //O(n)
     int nou = creeazaNod(elem);
-    urm[nou]=prim;
-    prec[nou]=0;
-    prec[prim]=nou;
-    prim=nou;
+
+    int crt = prim;
+    while (crt != 0) {
+        if (!rel(e[crt], elem)) {
+            break;
+        }
+        crt = urm[crt];
+    }
+    //crt > elem
+    if(crt==prim && crt==ultim && prim == 0){
+        //primul element din lista (crt==0)
+        urm[nou]=0;
+        prec[nou]=0;
+        prim=nou;
+        ultim=nou;
+    }
+    else if(crt==prim){
+        prec[prim]=nou;
+        urm[nou]=prim;
+        prim=nou;
+        prec[prim]=0;
+    }
+    else if(crt==0){
+        //se adauga dupa ultim
+        urm[ultim]=nou;
+        prec[nou]=ultim;
+        urm[nou]=0;
+        ultim=nou;
+    }
+    else{
+        //daca e la mijloc
+        urm[prec[crt]]=nou;
+        prec[nou]=prec[crt];
+
+        prec[crt]=nou;
+        urm[nou]=crt;
+    }
 
     lg++;
 }
@@ -169,6 +202,9 @@ bool Colectie::sterge(TElem elem) {
     if(p==prim){
         prim = urm[p];
         prec[prim]=0;
+    }else if(p==ultim){
+        ultim=prec[p];
+        urm[ultim]=0;
     }else{
         int q = prec[p];
 
