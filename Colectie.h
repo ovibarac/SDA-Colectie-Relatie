@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 typedef int TElem;
 
@@ -9,39 +10,6 @@ typedef bool(*Relatie)(TElem, TElem);
 bool rel(TElem, TElem);
 
 class IteratorColectie;
-class Node;
-
-typedef Node *PNod;
-
-class Node{
-private:
-    //valoarea nodului
-    TElem val;
-
-    //adresa nodului urmator
-    PNod urm;
-
-    //adresa nodului precedent
-    PNod prec;
-
-public:
-    friend class Colectie;
-    //constructor
-    //Θ(1)
-    Node(TElem val, PNod precendent,PNod urmator);
-
-    //valoarea
-    //Θ(1)
-    TElem elem();
-
-    //pointer la urmatorul nod
-    //Θ(1)
-    PNod urmator();
-
-    //pointer nodul precedent
-    //Θ(1)
-    PNod precedent();
-};
 
 class Colectie {
 
@@ -50,18 +18,72 @@ class Colectie {
 private:
 	/* aici e reprezentarea */
 
-    //primul nod
-    PNod prim;
+    //capacitatea vectorilor
+    int cp;
+
+    //lungimea reala a vectorilor
+    int lg;
+
+    //primul element
+    int prim;
+
+    //primul element in lista de el libere
+    int primLiber;
+
+    //ultimul element
+    int ultim;
+
+    //vectorul dinamic de elemente
+    TElem* e;
+
+    //vectorul dinamic de legaturi inainte
+    int* urm;
+
+    //vectorul dinamic de legaturi inapoi
+    int* prec;
+
+    //redimensioneaza vectorii
+    void redim();
+
+    //aloca spatiu liber de indice i
+    int aloca();
+
+    //dealoca spatiu de indice i
+    void dealoca(int i);
+
+    //initializeaza spatiul liber
+    void initSpatiuLiber();
+
+    int creeazaNod(TElem v);
+
 public:
+        void tipareste(){
+            for(int i = 1; i<= cp; i++){
+                std::cout<<e[i]<<' ';
+            }
+            std::cout<<'\n';
+            for(int i = 1; i<= cp; i++){
+                std::cout<<urm[i]<<' ';
+            }
+            std::cout<<'\n';
+            for(int i = 1; i<= cp; i++){
+                std::cout<<prec[i]<<' ';
+            }
+            std::cout<<'\n';
+            std::cout<<"PrimLiber "<<primLiber<<" prim "<<prim<<" ultim "<<ultim<<" cp "<<cp << " lg " << lg;
+        }
 		//constructorul implicit
 		Colectie();
 
+        //elimina nr aparitii ale elementului elem
+        int eliminaAparitii(int nr, TElem elem);
+
 		//adauga un element in colectie
-		void adauga(TElem e);
+		void adauga(TElem elem);
 
 		//sterge o aparitie a unui element din colectie
 		//returneaza adevarat daca s-a putut sterge
-		bool sterge(TElem e);
+		bool sterge(TElem elem);
 
 		//verifica daca un element se afla in colectie
 		bool cauta(TElem elem) const;

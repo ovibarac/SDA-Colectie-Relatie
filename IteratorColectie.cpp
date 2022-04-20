@@ -10,19 +10,26 @@ IteratorColectie::IteratorColectie(const Colectie& c): col(c) {
 TElem IteratorColectie::element() const{
     //Θ(1)
 	if(valid())
-        return curent->elem();
+        return col.e[curent];
     throw 1;
 }
 
 bool IteratorColectie::valid() const {
-    //Θ(1)
-	return curent != nullptr;
+    //Θ(n)
+	int i = col.prim;
+    while(i!=0){
+        if(i==curent){
+            return true;
+        }
+        i=col.urm[i];
+    }
+    return false;
 }
 
 void IteratorColectie::urmator() {
     //Θ(1)
     if(valid())
-        curent = curent->urmator();
+        curent = col.urm[curent];
     else
         throw 1;
 }
@@ -30,7 +37,7 @@ void IteratorColectie::urmator() {
 void IteratorColectie::precedent() {
     //Θ(1)
     if(valid())
-        curent = curent->precedent();
+        curent = col.prec[curent];
     else
         throw 1;
 }
